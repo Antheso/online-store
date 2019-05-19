@@ -1,26 +1,53 @@
-/**
- * Created by andrew.yang on 7/27/2017.
- */
-export const appRoutes=[
+import { Page404Component } from './components/page404/page404.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegistrationComponent } from './pages/registration/registration.component';
+import { Routes } from '@angular/router';
+
+import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
+
+export const appRoutes: Routes = [
     {
-        path:'',
-        redirectTo:'category',
-        pathMatch:'full'
+        path: '',
+        redirectTo: 'catalog',
+        pathMatch: 'full',
+        canActivate: [ AuthGuard ]
     },
     {
-        path:'category',
-        loadChildren:'./pages/category/category.module#CategoryModule'
+        path: 'catalog',
+        loadChildren: './pages/category/category.module#CategoryModule',
+        canActivateChild: [ AuthGuard ]
     },
     {
-        path:'product',
-        loadChildren:'./pages/product/product.module#ProductModule'
+        path: 'product',
+        loadChildren: './pages/product/product.module#ProductModule',
+        canActivateChild: [ AuthGuard ]
     },
     {
-        path:'cart',
-        loadChildren:'./pages/cart/cart-page.module#CartPageModule'
+        path: 'cart',
+        loadChildren: './pages/cart/cart-page.module#CartPageModule',
+        canActivateChild: [ AuthGuard ]
     },
     {
-        path:'**',
-        loadChildren:'./pages/category/category.module#CategoryModule'
+        path: 'admin',
+        loadChildren: './pages/admin/admin.module#AdminModule',
+        canActivateChild: [
+            AuthGuard,
+            AdminGuard
+        ]
+    },
+    {
+        path: 'login',
+        component: LoginComponent
+    },
+    {
+        path: 'registration',
+        component: RegistrationComponent,
+        canActivate: [ AuthGuard ]
+    },
+    {
+        path: '**',
+        component: Page404Component,
+        canActivate: [ AuthGuard ]
     }
 ];

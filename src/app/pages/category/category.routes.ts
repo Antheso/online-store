@@ -1,11 +1,12 @@
-/**
- * Created by andrew.yang on 7/27/2017.
- */
-import {CategoryComponent} from "./category.component";
+import {CategoryComponent} from './category.component';
+import { CategoryResolver } from './category.resolver';
 
-export const categoryRoutes=[
+export const categoryRoutes = [
     {
-        path:'',
-        component:CategoryComponent
+        path: '',
+        component: CategoryComponent,
+        resolve: {
+            data: CategoryResolver
+        }
     },
 ];

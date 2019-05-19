@@ -1,11 +1,13 @@
-/**
- * Created by andrew.yang on 7/27/2017.
- */
-import {ProductComponent} from "./product.component";
+import {ProductComponent} from './product.component';
 
-export const productRoutes=[
+import { ProductResolver } from './product.resolver';
+
+export const productRoutes = [
     {
-        path:':id',
-        component:ProductComponent
+        path: ':id',
+        component: ProductComponent,
+        resolve: {
+            data: ProductResolver
+        }
     },
 ];

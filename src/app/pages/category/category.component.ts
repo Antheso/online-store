@@ -1,36 +1,52 @@
-import { Component, OnInit } from '@angular/core';
-import {ProductService} from "../../services/products.service";
-import {Product} from "../../model/product";
-import {CartService} from "../../services/cart.service";
-import {Router} from "@angular/router";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { Subscription } from 'rxjs';
+
+import {ProductService} from '../../services/products.service';
+import {Product} from '../../model/product';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-category',
     templateUrl: './category.component.html',
     styleUrls: ['./category.component.css']
 })
-export class CategoryComponent implements OnInit {
-    public products:Array<Product>;
-    private sub;
+export class CategoryComponent implements OnInit, OnDestroy {
+
+    private subs: Subscription = new Subscription();
+
+    get products(): Product[] {
+        return this.productService.products$.value;
+    }
+
+    get pages(): any {
+        return this.productService.pages;
+    }
+
+    get limit(): any {
+        return this.productService.limit;
+    }
+
+    get offset(): any {
+        return this.productService.offset;
+    }
+
     constructor(
-         private productService:ProductService,
-         private cartService:CartService,
-         private router: Router
+        private productService: ProductService,
+        private route: ActivatedRoute
     ) { }
 
-    ngOnInit() {
-        this.load();
+    public ngOnInit(): void {
+        this.subs.add (
+            this.route.queryParams.pipe(
+                switchMap(params => this.productService.getProducts(params.limit, params.offset))
+            ).subscribe()
+        );
     }
-    load = () => {
-       this.sub = this.productService.getProducts('./assets/mock-data/products.json')
-            .subscribe(res => {
-                this.products = res;
-            })
-    };
-    addToCart = (product) => {
-        this.cartService.addToCart({product,quantity:1})
-    };
-    ngOnDestroy() {
-        this.sub.unsubscribe();
+
+    public ngOnDestroy(): void {
+        this.subs.unsubscribe();
     }
+
 }

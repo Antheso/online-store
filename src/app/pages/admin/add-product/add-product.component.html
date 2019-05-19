@@ -1,0 +1,39 @@
+<div class="add-product">
+  <mat-form-field class="add-product__row">
+    <input matInput placeholder="Title"
+      [(ngModel)]="product.title">
+  </mat-form-field>
+
+  <mat-form-field class="add-product__row">
+    <input matInput placeholder="Brand"
+      [(ngModel)]="product.brand">
+  </mat-form-field>
+
+  <mat-form-field class="add-product__row">
+    <input matInput placeholder="Price"
+      type="number"
+      [(ngModel)]="product.price">
+  </mat-form-field>
+
+  <mat-form-field class="add-product__row">
+    <textarea matInput placeholder="Description"
+      [(ngModel)]="product.description">
+    </textarea>
+  </mat-form-field>
+
+  <div class="add-product__container">
+    <mat-form-field class="add-product__row">
+      <input matInput placeholder="Image url"
+        [(ngModel)]="product.image">
+    </mat-form-field>
+    <img *ngIf="product.image"
+      class="add-product__image"
+      [src]="product.image">
+  </div>
+
+  <button mat-raised-button
+    color="primary"
+    (click)="saveProduct()">
+    Save
+  </button>
+</div>

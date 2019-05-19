@@ -1,15 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductComponent } from './product.component';
-import {SharedModule} from "../../shared/shared.module";
-import {ProductService} from "../../services/products.service";
-import {CartService} from "../../services/cart.service";
-import {HttpModule} from "@angular/http";
-import {FormsModule} from "@angular/forms";
-import {BrowserModule} from "@angular/platform-browser";
-import {RouterTestingModule} from "@angular/router/testing";
-import {CartPageComponent} from "../cart/cart-page.component";
-import {Product} from "../../model/product";
+import {SharedModule} from '../../shared/shared.module';
+import {ProductService} from '../../services/products.service';
+import {CartService} from '../../services/cart.service';
+import {HttpModule} from '@angular/http';
+import {FormsModule} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
+import {RouterTestingModule} from '@angular/router/testing';
+import {CartPageComponent} from '../cart/cart-page.component';
+import {Product} from '../../model/product';
 
 describe('Product Page, test add to cart button', () => {
   let component: ProductComponent;
@@ -43,12 +43,12 @@ describe('Product Page, test add to cart button', () => {
     f.detectChanges();
     products = [
       {
-        "title": "1",
-        "price": 40
+        'title': '1',
+        'price': 40
       },
       {
-        "title": "2",
-        "price": 28
+        'title': '2',
+        'price': 28
       }
     ];
   });

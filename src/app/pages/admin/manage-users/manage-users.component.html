@@ -1,0 +1,22 @@
+<div class="products">
+  <div class="products__row products__headrow">
+    <div class="products__col">Login</div>
+    <div class="products__col">Name</div>
+    <div class="products__col">Surname</div>
+    <div class="products__col">Is admin</div>
+  </div>
+  <div class="products__row" *ngFor="let user of users">
+    <div class="products__col" [title]="user.login">{{ user.login }}</div>
+    <div class="products__col" [title]="user.name">{{ user.name }}</div>
+    <div class="products__col" [title]="user.surname">{{ user.surname }}</div>
+    <div class="products__col" title="{{ user.isAdmin ? 'yes' : 'no' }}">{{ user.isAdmin ? 'yes' : 'no' }}</div>
+    <button mat-icon-button color="primary" (click)="editUser(user)">
+      <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+    </button>
+    <button mat-icon-button color="warn" (click)="deleteUser(user.login)">
+      <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+    </button>
+  </div>
+
+  <app-manage-sidebar *ngIf="editedUser$ | async"></app-manage-sidebar>
+</div>

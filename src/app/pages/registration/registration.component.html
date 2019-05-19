@@ -1,0 +1,67 @@
+<div class="login__container">
+  <div class="login">
+    <mat-form-field class="add-product__row">
+      <input matInput placeholder="Login" [formControl]="loginFormControl"
+        [errorStateMatcher]="matcher"
+        [(ngModel)]="user.login">
+      <mat-error *ngIf="loginFormControl.hasError('required')">
+        Login is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="loginFormControl.hasError('minlength')">
+        Login is <strong>too short!</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="add-product__row">
+      <input matInput placeholder="Passsword" [formControl]="passwordFormControl"
+        [errorStateMatcher]="matcher"
+        [(ngModel)]="user.password"
+        type="password">
+      <mat-error *ngIf="passwordFormControl.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="passwordFormControl.hasError('minlength')">
+        Password is <strong>too short!</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="add-product__row">
+      <input matInput placeholder="Repeat your password"
+        [formControl]="passwordFormControlCopy"
+        [errorStateMatcher]="matcher"
+        [(ngModel)]="repeatPass"
+        type="password"
+        pattern="{{ passwordFormControl.value }}">
+      <mat-error *ngIf="passwordFormControlCopy.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="passwordFormControlCopy.hasError('minlength')">
+        Password is <strong>too short!</strong>
+      </mat-error>
+      <mat-error *ngIf="passwordFormControlCopy.hasError('pattern')">
+        Passwords <strong>doesn't match!</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="add-product__row">
+      <input matInput placeholder="Name"
+        [errorStateMatcher]="matcher"
+        [(ngModel)]="user.name">
+    </mat-form-field>
+
+    <mat-form-field class="add-product__row">
+      <input matInput placeholder="Surname"
+        [errorStateMatcher]="matcher"
+        [(ngModel)]="user.surname">
+    </mat-form-field>
+
+    <div class="controls">
+      <button mat-raised-button
+        (click)="signUp()"
+        color="primary"
+        [disabled]="!isValid">
+        Sign up
+      </button>
+    </div>
+  </div>
+</div>

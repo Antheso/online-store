@@ -1,0 +1,36 @@
+<div class="add-product" @pageAnimations>
+  <mat-form-field class="add-product__row">
+    <input matInput placeholder="Login"
+      disabled
+      [(ngModel)]="user.login">
+  </mat-form-field>
+
+  <mat-form-field class="add-product__row">
+    <input matInput placeholder="Name"
+      [(ngModel)]="user.name">
+  </mat-form-field>
+
+  <mat-form-field class="add-product__row">
+    <input matInput placeholder="Surname"
+      [(ngModel)]="user.surname">
+  </mat-form-field>
+
+  <div class="add-product__row">
+    <mat-slide-toggle [(ngModel)]="user.isAdmin">
+      Is admin
+    </mat-slide-toggle>
+  </div>
+
+  <div class="controls">
+    <button mat-raised-button
+      color="primary"
+      (click)="updateUser()">
+      Save
+    </button>
+    <button mat-raised-button
+      color="danger"
+      (click)="close()">
+      Cancel
+    </button>
+  </div>
+</div>

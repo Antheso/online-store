@@ -1,6 +1,3 @@
-/**
- * Created by andrew.yang on 7/31/2017.
- */
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
@@ -60,12 +57,12 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
     }
   `],
     template: `
-    <div class="number">
-        <input class="input-style" type="number" [ngModel]="quantity" (ngModelChange)="onChange.emit($event)">
+    <div class='number'>
+        <input class='input-style' type='number' [ngModel]='quantity' (ngModelChange)='onChange.emit($event)'>
     </div>
-    <div class="actions">
-        <div (click)="plusOne()" class="noselect">+</div>
-        <div (click)="minusOne()" class="noselect">-</div>
+    <div class='actions'>
+        <div (click)='plusOne()' class='noselect'>+</div>
+        <div (click)='minusOne()' class='noselect'>-</div>
     </div>
 `
 })

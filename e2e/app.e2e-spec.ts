@@ -18,13 +18,13 @@ describe('online-store App', () => {
 
   it('should display 6 products.', () => {
     page.navigateTo();
-    let products = element.all(by.css(".image-container"));
+    let products = element.all(by.css('.image-container'));
     expect(products.count()).toEqual(6);
   });
   it('should display cart popup.', () => {
     page.navigateTo();
     let cartMenu = element(by.css('.header-cart'));
-    let cartPopup = element(by.tagName("cart-popup"));
+    let cartPopup = element(by.tagName('cart-popup'));
     cartMenu.click();
     expect(cartPopup.isDisplayed());
   });
@@ -34,7 +34,7 @@ describe('online-store App', () => {
     let cartMenu = element(by.css('.header-cart'));
     cartButton.click();
     cartMenu.click();
-    let cartPopup = element.all(by.css(".pop-cart-item"));
+    let cartPopup = element.all(by.css('.pop-cart-item'));
     expect(cartPopup.count()).toEqual(1);
   });
   it('should be able to navigate to product page from image hover button.', () => {
@@ -51,7 +51,7 @@ describe('online-store App', () => {
     cartMenu.click();
     let removeButton = element.all(by.css('.cart-remove'));
     removeButton.click();
-    let cartPopup = element.all(by.css(".pop-cart-item"));
+    let cartPopup = element.all(by.css('.pop-cart-item'));
     expect(cartPopup.count()).toEqual(0);
   });
   it('should be able to navigate to cart page from cart popup.', () => {
@@ -70,7 +70,7 @@ describe('online-store App', () => {
     cartButton.click();
     let cartMenu = element(by.css('.header-cart'));
     cartMenu.click();
-    let cartPopup = element.all(by.css(".pop-cart-item"));
+    let cartPopup = element.all(by.css('.pop-cart-item'));
     expect(cartPopup.count()).toEqual(1);
   });
   it('should be able to remove product from cart page.', () => {
@@ -79,7 +79,7 @@ describe('online-store App', () => {
     page.navigateToCart();
     let removeButton = element.all(by.css('.item-remove'));
     removeButton.click();
-    let cartText = element(by.css(".cart-page-content h4"));
+    let cartText = element(by.css('.cart-page-content h4'));
     expect(cartText.getText()).toEqual('Your cart is empty.');
   });
 });

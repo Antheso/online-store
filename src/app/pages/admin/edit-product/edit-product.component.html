@@ -1,0 +1,24 @@
+<div class="products">
+  <div class="products__row products__headrow">
+    <div class="products__col">Title</div>
+    <div class="products__col">Brand</div>
+    <div class="products__col">Price</div>
+    <div class="products__col">Description</div>
+    <div class="products__col">ImageUrl</div>
+  </div>
+  <div class="products__row" *ngFor="let product of products">
+    <div class="products__col" [title]="product.title">{{ product.title }}</div>
+    <div class="products__col" [title]="product.brand">{{ product.brand }}</div>
+    <div class="products__col" [title]="product.price">{{ product.price }}</div>
+    <div class="products__col" [title]="product.description">{{ product.description }}</div>
+    <div class="products__col" [title]="product.image">{{ product.image }}</div>
+    <button mat-icon-button color="primary" (click)="editProduct(product)">
+      <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+    </button>
+    <button mat-icon-button color="warn" (click)="deleteProduct(product.product_id)">
+      <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+    </button>
+  </div>
+
+  <app-edit-sidebar *ngIf="editedProd$ | async"></app-edit-sidebar>
+</div>

@@ -1,0 +1,41 @@
+<div class="login__container">
+  <div class="login">
+    <mat-form-field class="add-product__row">
+      <input matInput placeholder="Login" [formControl]="loginFormControl"
+        [errorStateMatcher]="matcher"
+        [(ngModel)]="user.login">
+      <mat-error *ngIf="loginFormControl.hasError('required')">
+        Login is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="loginFormControl.hasError('minlength')">
+        Too short!
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="add-product__row">
+      <input matInput placeholder="Passsword" [formControl]="passwordFormControl"
+        [errorStateMatcher]="matcher"
+        [(ngModel)]="user.password"
+        type="password">
+      <mat-error *ngIf="passwordFormControl.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="passwordFormControl.hasError('minlength')">
+        Too short!
+      </mat-error>
+    </mat-form-field>
+
+    <div class="controls">
+      <button mat-raised-button
+        color="primary"
+        [disabled]="!isValid"
+        (click)="singIn()">
+        Sign in
+      </button>
+      <button mat-raised-button
+        routerLink="/registration">
+        Sign up
+      </button>
+    </div>
+  </div>
+</div>

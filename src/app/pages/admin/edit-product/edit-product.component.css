@@ -1,0 +1,18 @@
+.products__row {
+  display: flex;
+  align-items: center;
+}
+
+.products__col {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 12vw;
+  box-sizing: border-box;
+  padding-right: 20px;
+}
+
+.products__headrow {
+  font-weight: 700;
+  margin-bottom: 20px;
+}
