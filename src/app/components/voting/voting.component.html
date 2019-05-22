@@ -1,0 +1,28 @@
+<ng-container *ngIf="visible">
+  <div class="voting" *ngIf="!voted; else resultsBlock">
+    <h2 class="voting__header">Voting for the best product!</h2>
+    <mat-radio-group aria-labelledby="example-radio-group-label"
+      class="example-radio-group"
+      [(ngModel)]="favProduct">
+      <mat-radio-button class="example-radio-button" *ngFor="let product of products"
+        [value]="product">
+        {{ product.title }}
+      </mat-radio-button>
+    </mat-radio-group>
+    <button mat-raised-button
+      color="primary"
+      (click)="vote()">
+      Vote
+    </button>
+  </div>
+  <ng-template #resultsBlock>
+    <div class="voting__results">
+      <h2 class="voting__header">Voting result!</h2>
+      <div class="result" *ngFor="let product of products">
+        <p class="votename">{{ product.title }}</p>
+        <span class="votecount">{{ product.vote_count }}</span>
+      </div>
+    </div>
+  </ng-template>
+  <div class="close" (click)="visible = false">x</div>
+</ng-container>

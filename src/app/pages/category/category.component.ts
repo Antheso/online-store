@@ -20,6 +20,10 @@ export class CategoryComponent implements OnInit, OnDestroy {
         return this.productService.products$.value;
     }
 
+    get voteProducts(): Product[] {
+        return this.productService.fullProducts$.value.filter(product => !!product.votable);
+    }
+
     get pages(): any {
         return this.productService.pages;
     }

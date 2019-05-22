@@ -5,4 +5,6 @@ export class Product {
     price?: number;
     description?: string;
     image?: string;
+    votable?: boolean;
+    vote_count?: number;
 }

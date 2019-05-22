@@ -9,7 +9,8 @@ import { Product } from '../model/product';
 @Injectable()
 export class ProductService {
 
-    public products$: BehaviorSubject<Product[]> = new BehaviorSubject(void 0);
+    public products$: BehaviorSubject<Product[]> = new BehaviorSubject([]);
+    public fullProducts$: BehaviorSubject<Product[]> = new BehaviorSubject([]);
     public product$: BehaviorSubject<Product> = new BehaviorSubject(void 0);
     public itemsCount = 0;
     public offset = 0;
@@ -41,6 +42,14 @@ export class ProductService {
             }),
             pluck('products'),
             tap(products => this.products$.next(products)),
+            catchError((error: any) => throwError(error || 'Server error'))
+        );
+    }
+
+    public getFullProducts() {
+        return this.api.get(`/products/full`).pipe(
+            pluck('products'),
+            tap(product => this.fullProducts$.next(product)),
             catchError((error: any) => throwError(error || 'Server error'))
         );
     }

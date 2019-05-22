@@ -1,0 +1,37 @@
+.voting,
+.voting__results {
+  background: #fff;
+  padding: 20px;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.example-radio-button {
+  margin-bottom: 10px;
+}
+
+.votecount {
+  display: block;
+  margin-left: 10px;
+}
+
+.votename {
+  margin: 0;
+}
+
+.result {
+  display: flex;
+  justify-content: space-between;
+}

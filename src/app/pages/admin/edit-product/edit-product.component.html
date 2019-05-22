@@ -5,6 +5,10 @@
     <div class="products__col">Price</div>
     <div class="products__col">Description</div>
     <div class="products__col">ImageUrl</div>
+    <div class="products__col ">Votable</div>
+    <div class="products__col ">Vote count</div>
+    <div class="products__col products__col_short"></div>
+    <div class="products__col products__col_short"></div>
   </div>
   <div class="products__row" *ngFor="let product of products">
     <div class="products__col" [title]="product.title">{{ product.title }}</div>
@@ -12,12 +16,30 @@
     <div class="products__col" [title]="product.price">{{ product.price }}</div>
     <div class="products__col" [title]="product.description">{{ product.description }}</div>
     <div class="products__col" [title]="product.image">{{ product.image }}</div>
-    <button mat-icon-button color="primary" (click)="editProduct(product)">
-      <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
-    </button>
-    <button mat-icon-button color="warn" (click)="deleteProduct(product.product_id)">
-      <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
-    </button>
+    <div class="products__col">{{ !!product.votable ? 'yes' : 'no' }}</div>
+    <div class="products__col">{{ product.vote_count }}</div>
+    <div class="products__col products__col_short">
+      <button mat-icon-button color="primary" (click)="editProduct(product)">
+        <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+      </button>
+    </div>
+    <div class="products__col products__col_short">
+      <button mat-icon-button color="warn" (click)="deleteProduct(product.product_id)">
+        <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="pagination">
+    <div class="link" *ngFor="let page of pages">
+      <a [routerLink]="[]"
+        [queryParams]="{
+          limit: limit,
+          offset: page.offset
+        }"
+        [class.active]="page.offset === offset">
+        {{ page.pageNum }}
+      </a>
+    </div>
   </div>
 
   <app-edit-sidebar *ngIf="editedProd$ | async"></app-edit-sidebar>

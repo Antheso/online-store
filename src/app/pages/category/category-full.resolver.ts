@@ -10,14 +10,14 @@ import { ProductService } from '../../services/products.service';
 @Injectable({
   providedIn: 'root'
 })
-export class CategoryResolver implements Resolve<Product[]> {
+export class CategoryFullResolver implements Resolve<Product[]> {
 
   constructor(
     private productsSrv: ProductService
   ) { }
 
-  public resolve(route: ActivatedRouteSnapshot): Observable<Product[]> {
-    return this.productsSrv.getProducts(route.queryParams.limit, route.queryParams.offset);
+  public resolve(): Observable<Product[]> {
+    return this.productsSrv.getFullProducts();
   }
 
 }

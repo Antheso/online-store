@@ -144,3 +144,10 @@
 .link .active {
     color: red;
 }
+
+.voting {
+    position: fixed;
+    left: 0;
+    top: 60px;
+    display: block;
+}

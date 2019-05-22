@@ -22,6 +22,18 @@
   </mat-form-field>
 
   <div class="add-product__container">
+    <mat-slide-toggle [(ngModel)]="product.votable">
+      Votable
+    </mat-slide-toggle>
+  </div>
+
+  <mat-form-field class="add-product__row">
+    <input matInput placeholder="Vote count"
+      type="number"
+      [(ngModel)]="product.vote_count">
+  </mat-form-field>
+
+  <div class="add-product__container">
     <mat-form-field class="add-product__row">
       <input matInput placeholder="Image url"
         [(ngModel)]="product.image">
