@@ -7,6 +7,14 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { CategoryResolver } from '../category/category.resolver';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { ManageUsersResolver } from './manage-users/manage-users.resolver';
+import { EmpListComponent } from './emp-list/emp-list.component';
+import { EmpListResolver } from './emp-list/emp-list.resolver';
+import { DeptListComponent } from './dept-list/dept-list.component';
+import { DeptListResolver } from './dept-list/dept-list.resolver';
+import { EmpAddComponent } from './emp-add/emp-add.component';
+import { EmpAddEmpResolver } from './emp-add/emp-add-emp.resolver';
+import { EmpAddDeptResolver } from './emp-add/emp-add-dept.resolver';
+import { DeptAddComponent } from './dept-add/dept-add.component';
 
 const adminRoutes: Routes = [
   {
@@ -35,6 +43,32 @@ const adminRoutes: Routes = [
         resolve: {
           data: ManageUsersResolver
         }
+      },
+      {
+        path: 'emp-list',
+        component: EmpListComponent,
+        resolve: {
+          data: EmpListResolver
+        }
+      },
+      {
+        path: 'dept-list',
+        component: DeptListComponent,
+        resolve: {
+          data: DeptListResolver
+        }
+      },
+      {
+        path: 'emp-add',
+        component: EmpAddComponent,
+        resolve: {
+          emp: EmpAddEmpResolver,
+          dept: EmpAddDeptResolver
+        }
+      },
+      {
+        path: 'dept-add',
+        component: DeptAddComponent
       }
     ]
   }

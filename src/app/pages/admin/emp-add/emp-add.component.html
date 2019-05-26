@@ -1,0 +1,63 @@
+<div class="add-product">
+  <mat-form-field class="add-product__row">
+    <input matInput placeholder="Empno"
+      type="number"
+      [(ngModel)]="emp.empno">
+  </mat-form-field>
+
+  <mat-form-field class="add-product__row">
+    <input matInput placeholder="Ename"
+      [(ngModel)]="emp.ename">
+  </mat-form-field>
+
+  <mat-form-field class="add-product__row">
+    <input matInput placeholder="Job"
+      [(ngModel)]="emp.job">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Mgr</mat-label>
+    <mat-select [(value)]="emp.mgr">
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let empl of emps | async"
+        [value]="empl.empno">
+        {{ empl.ename }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="add-product__row">
+    <input matInput placeholder="Hire date"
+      type="date"
+      [(ngModel)]="emp.hiredate">
+  </mat-form-field>
+
+  <mat-form-field class="add-product__row">
+    <input matInput placeholder="Sal"
+      type="number"
+      [(ngModel)]="emp.sal">
+  </mat-form-field>
+
+  <mat-form-field class="add-product__row">
+    <input matInput placeholder="Comm"
+      type="number"
+      [(ngModel)]="emp.comm">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Deptno</mat-label>
+    <mat-select [(value)]="emp.deptno">
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let dept of depts | async"
+        [value]="dept.deptno">
+        {{ dept.dname }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button
+    color="primary"
+    (click)="saveEmp()">
+    Save
+  </button>
+</div>

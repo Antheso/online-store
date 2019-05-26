@@ -1,0 +1,24 @@
+<div class="add-product">
+
+  <mat-form-field class="add-product__row">
+    <input matInput placeholder="Deptno"
+      type="number"
+      [(ngModel)]="dept.deptno">
+  </mat-form-field>
+
+  <mat-form-field class="add-product__row">
+    <input matInput placeholder="Dname"
+      [(ngModel)]="dept.dname">
+  </mat-form-field>
+
+  <mat-form-field class="add-product__row">
+    <input matInput placeholder="Loc"
+      [(ngModel)]="dept.loc">
+  </mat-form-field>
+
+  <button mat-raised-button
+    color="primary"
+    (click)="addDept()">
+    Save
+  </button>
+</div>

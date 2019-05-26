@@ -17,6 +17,10 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { EditSidebarComponent } from './edit-product/edit-sidebar/edit-sidebar.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { ManageSidebarComponent } from './manage-users/manage-sidebar/manage-sidebar.component';
+import { EmpListComponent } from './emp-list/emp-list.component';
+import { DeptListComponent } from './dept-list/dept-list.component';
+import { EmpAddComponent } from './emp-add/emp-add.component';
+import { DeptAddComponent } from './dept-add/dept-add.component';
 
 @NgModule({
   imports: [
@@ -35,7 +39,11 @@ import { ManageSidebarComponent } from './manage-users/manage-sidebar/manage-sid
     EditProductComponent,
     EditSidebarComponent,
     ManageUsersComponent,
-    ManageSidebarComponent
+    ManageSidebarComponent,
+    EmpListComponent,
+    DeptListComponent,
+    EmpAddComponent,
+    DeptAddComponent
   ]
 })
 export class AdminModule { }

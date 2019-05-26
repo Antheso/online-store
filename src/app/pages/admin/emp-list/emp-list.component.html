@@ -1,0 +1,34 @@
+<div class="products">
+  <div class="products__row products__headrow">
+    <div class="products__col">Empno</div>
+    <div class="products__col">Ename</div>
+    <div class="products__col">Job</div>
+    <div class="products__col">Mgr</div>
+    <div class="products__col">Hiredate</div>
+    <div class="products__col ">Sal</div>
+    <div class="products__col ">Comm</div>
+    <div class="products__col ">Deptno</div>
+  </div>
+  <div class="products__row" *ngFor="let emp of emps | async">
+    <div class="products__col" [title]="emp.empno">{{ emp.empno }}</div>
+    <div class="products__col" [title]="emp.ename">{{ emp.ename }}</div>
+    <div class="products__col" [title]="emp.job">{{ emp.job }}</div>
+    <div class="products__col" [title]="emp.mgr">{{ emp.mgr }}</div>
+    <div class="products__col" [title]="emp.hiredate">{{ emp.hiredate }}</div>
+    <div class="products__col" [title]="emp.sal">{{ emp.sal }}</div>
+    <div class="products__col" [title]="emp.comm">{{ emp.comm }}</div>
+    <div class="products__col" [title]="emp.deptno">{{ emp.deptno }}</div>
+  </div>
+  <div class="pagination">
+    <div class="link" *ngFor="let page of pages">
+      <a [routerLink]="[]"
+        [queryParams]="{
+          limit: limit,
+          offset: page.offset
+        }"
+        [class.active]="page.offset === offset">
+        {{ page.pageNum }}
+      </a>
+    </div>
+  </div>
+</div>
